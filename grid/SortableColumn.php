@@ -5,8 +5,9 @@ namespace dench\sortable\grid;
 use dench\sortable\assets\SortableAsset;
 use yii\helpers\Html;
 use yii\web\View;
+use yii\grid\Column;
 
-class Column extends \yii\grid\Column
+class SortableColumn extends Column
 {
     public $headerOptions = ['style' => 'width: 30px;'];
 
