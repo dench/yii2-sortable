@@ -13,13 +13,13 @@ class Column extends \yii\grid\Column
     public function init()
     {
         SortableAsset::register($this->grid->view);
-        $this->grid->view->registerJs('initSortableWidgets();', View::POS_READY, 'sortable');
+        $this->grid->view->registerJs('initSortable();', View::POS_READY, 'sortable');
     }
 
     protected function renderDataCellContent($model, $key, $index)
     {
         return Html::tag('div', '&#9776;', [
-            'class' => 'sortable-widget-handler',
+            'class' => 'sortable-handler',
             'data-id' => $model->id,
         ]);
     }
