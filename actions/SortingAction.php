@@ -8,7 +8,7 @@ use yii\base\Action;
 use yii\db\ActiveQuery;
 use yii\web\BadRequestHttpException;
 
-class Sorting extends Action
+class SortingAction extends Action
 {
     /** @var ActiveQuery */
     public $query;

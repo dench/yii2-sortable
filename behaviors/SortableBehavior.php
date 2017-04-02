@@ -5,7 +5,7 @@ namespace dench\sortable\behaviors;
 use yii\base\Behavior;
 use yii\db\ActiveRecord;
 
-class Sortable extends Behavior
+class SortableBehavior extends Behavior
 {
     /** @var string */
     public $orderAttribute = 'position';
