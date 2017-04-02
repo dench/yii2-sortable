@@ -23,7 +23,10 @@ class Sortable extends Behavior
 
     public function beforeInsert()
     {
-        $last = $this->query->orderBy([$this->orderAttribute => SORT_DESC])->limit(1)->one();
+        /** @var ActiveRecord $model */
+        $className = $this->owner->className();
+        $model = new $className();
+        $last = $model::find()->orderBy([$this->orderAttribute => SORT_DESC])->one();
         if ($last === null) {
             $this->owner->{$this->orderAttribute} = 1;
         } else {
