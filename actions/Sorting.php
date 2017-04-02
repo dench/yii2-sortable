@@ -2,6 +2,8 @@
 
 namespace dench\sortable\actions;
 
+use Exception;
+use Yii;
 use yii\base\Action;
 use yii\db\ActiveQuery;
 use yii\web\BadRequestHttpException;
@@ -16,19 +18,21 @@ class Sorting extends Action
 
     public function run()
     {
-        $transaction = \Yii::$app->db->beginTransaction();
+        $transaction = Yii::$app->db->beginTransaction();
         try {
-            foreach (\Yii::$app->request->post('sorting') as $order => $id) {
+            $ids = Yii::$app->request->post('ids');
+            $position = Yii::$app->request->post('position');
+            foreach ($ids as $key => $id) {
                 $query = clone $this->query;
                 $model = $query->andWhere(['id' => $id])->one();
-                if ($model === null) {
+                if ($model === null || $position[$key] === null) {
                     throw new BadRequestHttpException();
                 }
-                $model->{$this->orderAttribute} = $order;
+                $model->{$this->orderAttribute} = $position[$key];
                 $model->update(false, [$this->orderAttribute]);
             }
             $transaction->commit();
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             $transaction->rollBack();
         }
     }
