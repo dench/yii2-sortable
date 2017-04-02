@@ -4,13 +4,9 @@ namespace dench\sortable\behaviors;
 
 use yii\base\Behavior;
 use yii\db\ActiveRecord;
-use yii\db\Query;
 
 class Sortable extends Behavior
 {
-    /** @var Query */
-    public $query;
-
     /** @var string */
     public $orderAttribute = 'position';
 
