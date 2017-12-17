@@ -6,7 +6,7 @@ use yii\web\AssetBundle;
 
 class RubaxaAsset extends AssetBundle
 {
-    public $sourcePath = '@bower/rubaxa/sortablejs';
+    public $sourcePath = '@bower/sortablejs';
 
     public $js = [
         'Sortable.min.js',
