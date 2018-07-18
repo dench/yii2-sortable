@@ -12,7 +12,7 @@
     ],
     "require": {
         "yiisoft/yii2": "*",
-        "bower-asset/sortablejs": "*"
+        "bower-asset/sortablejs": "~1.6.0"
     },
     "autoload": {
         "psr-4": {
